@@ -1,24 +1,39 @@
 import { ThemeProvider } from './components/ThemeProvider'
+import { getSEOConfig, getPersonalInfo } from '../lib/config'
 import './globals.css'
 
+const seoConfig = getSEOConfig()
+const personalInfo = getPersonalInfo()
+
 export const metadata = {
-  title: 'Alex Chen - Full Stack Developer | React & Node.js Expert',
-  description: 'Passionate full-stack developer with 5+ years experience in React, Node.js, and modern web technologies. Creating beautiful digital experiences with clean, efficient code.',
-  keywords: 'Full Stack Developer, React Developer, Node.js, TypeScript, Frontend Engineer, Web Development, Portfolio',
-  authors: [{ name: 'Alex Chen', url: 'https://alexchen.dev' }],
-  creator: 'Alex Chen',
-  publisher: 'Alex Chen',
+  title: seoConfig.title,
+  description: seoConfig.description,
+  keywords: seoConfig.keywords,
+  authors: [{ name: seoConfig.author, url: seoConfig.siteUrl }],
+  creator: seoConfig.author,
+  publisher: seoConfig.author,
   openGraph: {
-    title: 'Alex Chen - Full Stack Developer',
-    description: 'Creating beautiful digital experiences with modern web technologies',
+    title: `${personalInfo.name} - ${personalInfo.title}`,
+    description: seoConfig.description,
     type: 'website',
     locale: 'en_US',
+    url: seoConfig.siteUrl,
+    siteName: personalInfo.name,
+    images: [
+      {
+        url: seoConfig.image,
+        width: 1200,
+        height: 630,
+        alt: `${personalInfo.name} - ${personalInfo.title}`,
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Alex Chen - Full Stack Developer',
-    description: 'Creating beautiful digital experiences with modern web technologies',
-    creator: '@alexchen_dev',
+    title: `${personalInfo.name} - ${personalInfo.title}`,
+    description: seoConfig.description,
+    creator: seoConfig.twitterHandle,
+    images: [seoConfig.image],
   },
   robots: {
     index: true,

@@ -1,0 +1,204 @@
+{
+  "personal": {
+    "name": "Alex Chen",
+    "title": "Full Stack Developer",
+    "subtitle": "A passionate full-stack developer crafting beautiful digital experiences with modern technologies.",
+    "email": "hello@alexchen.dev",
+    "location": "San Francisco, CA",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop&crop=face",
+    "resume": "/resume.pdf"
+  },
+  
+  "hero": {
+    "greeting": "Hello, I'm",
+    "name": "Alex Chen",
+    "description": "A passionate full-stack developer crafting beautiful digital experiences with modern technologies.",
+    "cta": {
+      "text": "View My Work",
+      "action": "scrollToProjects"
+    }
+  },
+
+  "about": {
+    "title": "About Me",
+    "description": [
+      "I'm a passionate developer with 5+ years of experience in creating innovative web solutions. I specialize in React, Node.js, and modern web technologies, always striving to deliver pixel-perfect designs and seamless user experiences.",
+      "When I'm not coding, you'll find me exploring new design trends, contributing to open source projects, or enjoying a good cup of coffee while reading about the latest tech innovations."
+    ]
+  },
+
+  "skills": {
+    "title": "Skills & Expertise",
+    "categories": [
+      {
+        "name": "React",
+        "icon": "⚛️",
+        "level": 95
+      },
+      {
+        "name": "Next.js", 
+        "icon": "▲",
+        "level": 90
+      },
+      {
+        "name": "Node.js",
+        "icon": "💚",
+        "level": 88
+      },
+      {
+        "name": "TypeScript",
+        "icon": "📘",
+        "level": 85
+      },
+      {
+        "name": "Python",
+        "icon": "🐍",
+        "level": 80
+      },
+      {
+        "name": "MongoDB",
+        "icon": "🍃",
+        "level": 82
+      },
+      {
+        "name": "AWS",
+        "icon": "☁️",
+        "level": 78
+      },
+      {
+        "name": "Docker",
+        "icon": "🐳",
+        "level": 75
+      }
+    ]
+  },
+
+  "projects": {
+    "title": "Featured Projects",
+    "items": [
+      {
+        "id": 1,
+        "title": "E-Commerce Platform",
+        "description": "A modern e-commerce solution built with Next.js, featuring real-time inventory management and secure payment processing.",
+        "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
+        "technologies": ["Next.js", "Stripe", "MongoDB"],
+        "links": {
+          "demo": "https://demo.example.com",
+          "github": "https://github.com/alexchen/ecommerce",
+          "case_study": "/case-studies/ecommerce"
+        },
+        "featured": true
+      },
+      {
+        "id": 2,
+        "title": "Task Management App",
+        "description": "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
+        "image": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
+        "technologies": ["React", "Socket.io", "Node.js"],
+        "links": {
+          "demo": "https://tasks.example.com",
+          "github": "https://github.com/alexchen/taskmanager"
+        },
+        "featured": true
+      },
+      {
+        "id": 3,
+        "title": "AI-Powered Analytics",
+        "description": "A data visualization dashboard that uses machine learning to provide insights and predictions for business metrics.",
+        "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+        "technologies": ["Python", "TensorFlow", "React"],
+        "links": {
+          "demo": "https://analytics.example.com",
+          "github": "https://github.com/alexchen/ai-analytics"
+        },
+        "featured": true
+      },
+      {
+        "id": 4,
+        "title": "Weather Forecast App", 
+        "description": "A beautiful weather application with location-based forecasts, interactive maps, and personalized weather alerts.",
+        "image": "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=600&h=400&fit=crop",
+        "technologies": ["React Native", "OpenWeather API"],
+        "links": {
+          "demo": "https://weather.example.com",
+          "github": "https://github.com/alexchen/weather-app"
+        },
+        "featured": false
+      }
+    ]
+  },
+
+  "contact": {
+    "title": "Let's Work Together",
+    "description": "Have a project in mind? I'd love to hear about it. Let's create something amazing together.",
+    "cta": {
+      "text": "Get In Touch",
+      "action": "email"
+    },
+    "social": [
+      {
+        "name": "GitHub",
+        "url": "https://github.com/alexchen",
+        "icon": "github"
+      },
+      {
+        "name": "LinkedIn", 
+        "url": "https://linkedin.com/in/alexchen",
+        "icon": "linkedin"
+      },
+      {
+        "name": "Twitter",
+        "url": "https://twitter.com/alexchen_dev",
+        "icon": "twitter"
+      }
+    ]
+  },
+
+  "seo": {
+    "title": "Alex Chen - Full Stack Developer | React & Node.js Expert",
+    "description": "Passionate full-stack developer with 5+ years experience in React, Node.js, and modern web technologies. Creating beautiful digital experiences with clean, efficient code.",
+    "keywords": "Full Stack Developer, React Developer, Node.js, TypeScript, Frontend Engineer, Web Development, Portfolio",
+    "author": "Alex Chen",
+    "siteUrl": "https://alexchen.dev",
+    "image": "/og-image.png",
+    "twitterHandle": "@alexchen_dev"
+  },
+
+  "theme": {
+    "colors": {
+      "primary": "#3b82f6",
+      "secondary": "#8b5cf6", 
+      "accent": "#ef4444",
+      "background": {
+        "light": "#ffffff",
+        "dark": "#000000"
+      }
+    },
+    "fonts": {
+      "primary": "Inter",
+      "secondary": "SF Pro Display"
+    },
+    "animations": {
+      "duration": {
+        "fast": "0.3s",
+        "normal": "0.6s", 
+        "slow": "1.2s"
+      },
+      "easing": "cubic-bezier(0.4, 0, 0.2, 1)"
+    }
+  },
+
+  "footer": {
+    "copyright": "© 2024 Alex Chen. Designed with ❤️ and built with Next.js",
+    "links": [
+      {
+        "text": "Privacy Policy",
+        "url": "/privacy"
+      },
+      {
+        "text": "Terms of Service", 
+        "url": "/terms"
+      }
+    ]
+  }
+}
