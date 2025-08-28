@@ -183,34 +183,34 @@ export default function Home() {
               <div className="text-xl font-sf-pro font-semibold">
                 {personalInfo.name}
               </div>
-              <div className="flex items-center space-x-8">
+              <div className="flex items-center space-x-3 md:space-x-6">
                 <button 
                   onClick={() => scrollToSection('about')}
-                  className="hover:text-blue-500 transition-colors duration-200 focus:outline-none focus:text-blue-500"
+                  className="nav-link focus:outline-none"
                 >
                   About
                 </button>
                 <button 
                   onClick={() => scrollToSection('skills')}
-                  className="hover:text-blue-500 transition-colors duration-200 focus:outline-none focus:text-blue-500"
+                  className="nav-link focus:outline-none"
                 >
                   Skills
                 </button>
                 <button 
                   onClick={() => scrollToSection('projects')}
-                  className="hover:text-blue-500 transition-colors duration-200 focus:outline-none focus:text-blue-500"
+                  className="nav-link focus:outline-none"
                 >
                   Projects
                 </button>
                 <button 
                   onClick={() => scrollToSection('contact')}
-                  className="hover:text-blue-500 transition-colors duration-200 focus:outline-none focus:text-blue-500"
+                  className="nav-link focus:outline-none"
                 >
                   Contact
                 </button>
                 <button
                   onClick={toggleTheme}
-                  className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                  className="theme-toggle focus:outline-none"
                   aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
                 >
                   <span className="text-lg" role="img" aria-hidden="true">
@@ -235,7 +235,7 @@ export default function Home() {
             <div className="hero-cta">
               <button 
                 onClick={() => scrollToSection('projects')}
-                className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-medium px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-black"
+                className="btn-primary magnetic-button relative z-10 text-white font-semibold px-10 py-4 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-black"
               >
                 {heroConfig.cta.text}
               </button>
@@ -286,6 +286,9 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Section Separator */}
+        <div className="section-separator"></div>
+
         {/* Skills Section - 技能区域 */}
         <section id="skills" ref={skillsRef} className="skills-section py-32 px-6">
           <div className="max-w-6xl mx-auto text-center">
@@ -298,12 +301,12 @@ export default function Home() {
                   key={skill.name}
                   className="skill-item bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
                 >
-                  <div className="text-4xl mb-4">{skill.icon}</div>
-                  <h3 className="font-sf-pro font-semibold text-lg mb-2">{skill.name}</h3>
+                  <div className="skill-icon text-4xl mb-4">{skill.icon}</div>
+                  <h3 className="font-sf-pro font-semibold text-lg mb-3">{skill.name}</h3>
                   {skill.level && (
-                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                    <div className="skill-level-bar dark:bg-gray-700">
                       <div 
-                        className="bg-blue-500 h-2 rounded-full transition-all duration-1000"
+                        className="skill-level-fill"
                         style={{ width: `${skill.level}%` }}
                       ></div>
                     </div>
@@ -313,6 +316,9 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Section Separator */}
+        <div className="section-separator"></div>
 
         {/* Projects Section - 项目区域 */}
         <section id="projects" ref={projectsRef} className="projects-section py-32 px-6">
@@ -326,6 +332,7 @@ export default function Home() {
                   key={project.id}
                   className="project-card bg-white dark:bg-gray-800 rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
                 >
+                  <div className="project-overlay"></div>
                   <div className="relative h-48 md:h-64">
                     <Image
                       src={project.image}
@@ -356,9 +363,9 @@ export default function Home() {
                           href={project.links.demo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center text-blue-500 hover:text-blue-600 font-medium transition-colors duration-200"
+                          className="link-with-arrow text-blue-500 hover:text-blue-600 font-medium"
                         >
-                          View Demo →
+                          View Demo
                         </a>
                       )}
                       {project.links.github && (
@@ -366,9 +373,9 @@ export default function Home() {
                           href={project.links.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-blue-500 font-medium transition-colors duration-200"
+                          className="link-with-arrow text-gray-600 dark:text-gray-400 hover:text-blue-500 font-medium"
                         >
-                          GitHub →
+                          GitHub
                         </a>
                       )}
                     </div>
@@ -378,6 +385,9 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Section Separator */}
+        <div className="section-separator"></div>
 
         {/* Contact Section - 联系区域 */}
         <section id="contact" ref={contactRef} className="contact-section py-32 px-6">
@@ -392,18 +402,18 @@ export default function Home() {
               <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
                 <a
                   href={`mailto:${personalInfo.email}`}
-                  className="bg-blue-500 hover:bg-blue-600 text-white font-medium px-8 py-4 rounded-full transition-all duration-300 hover:scale-105"
+                  className="btn-primary magnetic-button relative z-10 text-white font-semibold px-10 py-4 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
                 >
                   {contactConfig.cta.text}
                 </a>
-                <div className="flex space-x-6">
+                <div className="flex gap-4 flex-wrap justify-center">
                   {contactConfig.social.map((social) => (
                     <a 
                       key={social.name}
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-600 dark:text-gray-400 hover:text-blue-500 transition-colors duration-200"
+                      className="social-link text-gray-600 dark:text-gray-400 hover:text-white transition-colors duration-200"
                     >
                       {social.name}
                     </a>
