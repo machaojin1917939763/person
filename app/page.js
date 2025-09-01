@@ -57,43 +57,50 @@ export default function Home() {
     // 只在客户端挂载后执行动画
     if (!mounted) return
     
+    // 页面加载时的初始动画
+    gsap.set('.hero-title, .hero-subtitle, .hero-cta', { opacity: 0, y: 50 })
+    gsap.set('.about-content, .skill-item, .experience-card, .project-card', { opacity: 0, y: 30 })
+    
     // Hero Section Animation - 英雄区动画
     const heroTl = gsap.timeline()
     heroTl
       .from('.hero-title', { 
         opacity: 0, 
-        y: 50, 
-        duration: 1.2, 
-        ease: 'power3.out' 
+        y: 80, 
+        duration: 1.4, 
+        ease: 'power4.out' 
       })
       .from('.hero-subtitle', { 
         opacity: 0, 
-        y: 30, 
-        duration: 0.8, 
-        ease: 'power2.out' 
-      }, '-=0.6')
+        y: 40, 
+        duration: 1.0, 
+        ease: 'power3.out' 
+      }, '-=0.8')
       .from('.hero-cta', { 
         opacity: 0, 
-        y: 20, 
-        duration: 0.6, 
-        ease: 'power2.out' 
-      }, '-=0.4')
+        y: 30, 
+        duration: 0.8, 
+        ease: 'power2.out',
+        scale: 0.9
+      }, '-=0.6')
 
     // About Section Animation - 关于区域滚动动画
     gsap.fromTo('.about-content', 
       { 
         opacity: 0, 
-        y: 60 
+        y: 60,
+        scale: 0.95
       },
       {
         opacity: 1,
         y: 0,
-        duration: 1,
+        scale: 1,
+        duration: 1.2,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: '.about-section',
-          start: 'top 80%',
-          end: 'bottom 20%',
+          start: 'top 85%',
+          end: 'bottom 15%',
           toggleActions: 'play none none reverse'
         }
       }
@@ -103,18 +110,20 @@ export default function Home() {
     gsap.fromTo('.skill-item', 
       { 
         opacity: 0, 
-        scale: 0.8 
+        scale: 0.85,
+        y: 30
       },
       {
         opacity: 1,
         scale: 1,
-        duration: 0.6,
-        ease: 'back.out(1.7)',
-        stagger: 0.1,
+        y: 0,
+        duration: 0.8,
+        ease: 'back.out(1.4)',
+        stagger: 0.15,
         scrollTrigger: {
           trigger: '.skills-section',
-          start: 'top 70%',
-          end: 'bottom 30%',
+          start: 'top 75%',
+          end: 'bottom 25%',
           toggleActions: 'play none none reverse'
         }
       }
@@ -124,18 +133,20 @@ export default function Home() {
     gsap.fromTo('.experience-card', 
       { 
         opacity: 0, 
-        y: 50 
+        y: 60,
+        scale: 0.95
       },
       {
         opacity: 1,
         y: 0,
-        duration: 0.8,
-        ease: 'power2.out',
-        stagger: 0.3,
+        scale: 1,
+        duration: 1.0,
+        ease: 'power3.out',
+        stagger: 0.4,
         scrollTrigger: {
           trigger: '.experience-section',
-          start: 'top 75%',
-          end: 'bottom 25%',
+          start: 'top 80%',
+          end: 'bottom 20%',
           toggleActions: 'play none none reverse'
         }
       }
@@ -145,18 +156,22 @@ export default function Home() {
     gsap.fromTo('.project-card', 
       { 
         opacity: 0, 
-        y: 40 
+        y: 50,
+        scale: 0.95,
+        rotationY: 5
       },
       {
         opacity: 1,
         y: 0,
-        duration: 0.8,
-        ease: 'power2.out',
-        stagger: 0.2,
+        scale: 1,
+        rotationY: 0,
+        duration: 1.0,
+        ease: 'power3.out',
+        stagger: 0.3,
         scrollTrigger: {
           trigger: '.projects-section',
-          start: 'top 75%',
-          end: 'bottom 25%',
+          start: 'top 80%',
+          end: 'bottom 20%',
           toggleActions: 'play none none reverse'
         }
       }
@@ -166,21 +181,129 @@ export default function Home() {
     gsap.fromTo('.contact-content', 
       { 
         opacity: 0, 
-        y: 50 
+        y: 60,
+        scale: 0.95
       },
       {
         opacity: 1,
         y: 0,
-        duration: 1,
+        scale: 1,
+        duration: 1.2,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: '.contact-section',
-          start: 'top 80%',
-          end: 'bottom 20%',
+          start: 'top 85%',
+          end: 'bottom 15%',
           toggleActions: 'play none none reverse'
         }
       }
     )
+
+    // 添加鼠标悬停效果
+    gsap.utils.toArray('.skill-item, .project-card').forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        gsap.to(item, {
+          scale: 1.02,
+          duration: 0.3,
+          ease: 'power2.out'
+        })
+      })
+      
+      item.addEventListener('mouseleave', () => {
+        gsap.to(item, {
+          scale: 1,
+          duration: 0.3,
+          ease: 'power2.out'
+        })
+      })
+    })
+
+    // 工作经历卡片的特殊悬停效果
+    gsap.utils.toArray('.experience-card').forEach((card, index) => {
+      const companyName = card.querySelector('.company-name')
+      const positionTitle = card.querySelector('.position-title')
+      const periodBadge = card.querySelector('.period-badge')
+      const achievementItems = card.querySelectorAll('.achievement-item')
+      
+      card.addEventListener('mouseenter', () => {
+        // 公司名称发光效果
+        gsap.to(companyName, {
+          color: '#3b82f6',
+          duration: 0.3,
+          ease: 'power2.out'
+        })
+        
+        // 职位标题渐变效果
+        gsap.to(positionTitle, {
+          color: '#3b82f6',
+          duration: 0.3,
+          ease: 'power2.out'
+        })
+        
+        // 时间徽章缩放
+        gsap.to(periodBadge, {
+          scale: 1.05,
+          duration: 0.3,
+          ease: 'back.out(1.7)'
+        })
+        
+        // 成就列表项依次出现
+        gsap.to(achievementItems, {
+          x: 8,
+          duration: 0.3,
+          stagger: 0.05,
+          ease: 'power2.out'
+        })
+      })
+      
+      card.addEventListener('mouseleave', () => {
+        // 恢复原始状态
+        gsap.to(companyName, {
+          color: '#374151',
+          duration: 0.3,
+          ease: 'power2.out'
+        })
+        
+        // 根据当前主题恢复正确的颜色
+        const isDark = document.documentElement.classList.contains('dark')
+        gsap.to(positionTitle, {
+          color: isDark ? '#f9fafb' : '#1f2937',
+          duration: 0.3,
+          ease: 'power2.out'
+        })
+        
+        gsap.to(periodBadge, {
+          scale: 1,
+          duration: 0.3,
+          ease: 'power2.out'
+        })
+        
+        gsap.to(achievementItems, {
+          x: 0,
+          duration: 0.3,
+          ease: 'power2.out'
+        })
+      })
+    })
+
+    // 添加导航链接悬停效果
+    gsap.utils.toArray('.nav-link').forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        gsap.to(link, {
+          scale: 1.05,
+          duration: 0.2,
+          ease: 'power2.out'
+        })
+      })
+      
+      link.addEventListener('mouseleave', () => {
+        gsap.to(link, {
+          scale: 1,
+          duration: 0.2,
+          ease: 'power2.out'
+        })
+      })
+    })
 
     // Cleanup function
     return () => {
@@ -265,7 +388,7 @@ export default function Home() {
             <div className="hero-cta">
               <button 
                 onClick={() => scrollToSection('projects')}
-                className="btn-primary magnetic-button relative z-10 text-white font-semibold px-10 py-4 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-black"
+                className="btn-primary magnetic-button hover-lift relative z-10 text-white font-semibold px-10 py-4 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-black"
               >
                 {heroConfig.cta.text}
               </button>
@@ -329,7 +452,7 @@ export default function Home() {
               {skillsConfig.categories.map((skill, index) => (
                 <div
                   key={skill.name}
-                  className="skill-item bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+                  className="skill-item card-hover bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg"
                 >
                   <div className="skill-icon text-4xl mb-4">{skill.icon}</div>
                   <h3 className="font-sf-pro font-semibold text-lg mb-3">{skill.name}</h3>
@@ -340,6 +463,11 @@ export default function Home() {
                         style={{ width: `${skill.level}%` }}
                       ></div>
                     </div>
+                  )}
+                  {skill.description && (
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-2 leading-relaxed">
+                      {skill.description}
+                    </p>
                   )}
                 </div>
               ))}
@@ -360,30 +488,30 @@ export default function Home() {
               {experienceConfig.items.map((job, index) => (
                 <div
                   key={index}
-                  className="experience-card bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+                  className="experience-card card-hover bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8"
                 >
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
                     <div className="mb-4 md:mb-0">
-                      <h3 className="font-sf-pro font-bold text-2xl mb-2 text-gray-900 dark:text-white">
+                      <h3 className="position-title font-sf-pro font-bold text-2xl mb-2 text-gray-900 dark:text-white transition-all duration-300">
                         {job.position}
                       </h3>
                       <div className="flex flex-wrap items-center gap-4 text-gray-600 dark:text-gray-400">
-                        <span className="font-semibold text-lg">{job.company}</span>
+                        <span className="company-name font-semibold text-lg transition-all duration-300">{job.company}</span>
                         <span className="text-sm">•</span>
-                        <span>{job.department}</span>
+                        <span className="department-info transition-all duration-300">{job.department}</span>
                         <span className="text-sm">•</span>
-                        <span>{job.location}</span>
+                        <span className="department-info transition-all duration-300">{job.location}</span>
                       </div>
                     </div>
                     <div className="text-right">
-                      <span className="inline-block bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 px-4 py-2 rounded-full text-sm font-medium">
+                      <span className="period-badge inline-block bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300">
                         {job.period}
                       </span>
                     </div>
                   </div>
                   <div className="space-y-3">
                     {job.achievements.map((achievement, achievementIndex) => (
-                      <div key={achievementIndex} className="flex items-start">
+                      <div key={achievementIndex} className="achievement-item flex items-start">
                         <span className="text-blue-500 mr-3 mt-1 text-lg">•</span>
                         <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                           {achievement}
@@ -410,7 +538,7 @@ export default function Home() {
               {projectsConfig.items.filter(project => project.featured).map((project) => (
                 <div
                   key={project.id}
-                  className="project-card bg-white dark:bg-gray-800 rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+                  className="project-card card-hover bg-white dark:bg-gray-800 rounded-3xl shadow-xl overflow-hidden"
                 >
                   <div className="project-overlay"></div>
                   <div className="relative h-48 md:h-64">
@@ -499,7 +627,7 @@ export default function Home() {
               <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
                 <a
                   href={`mailto:${personalInfo.email}`}
-                  className="btn-primary magnetic-button relative z-10 text-white font-semibold px-10 py-4 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                  className="btn-primary magnetic-button hover-lift relative z-10 text-white font-semibold px-10 py-4 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
                 >
                   {contactConfig.cta.text}
                 </a>

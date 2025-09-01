@@ -186,6 +186,360 @@ body {
   }
 }
 
+/* 新增的动画效果 */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes slideInFromTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(50px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05) translateY(0);
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* 悬停效果增强 */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.dark .hover-lift:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* 卡片悬停效果 */
+.card-hover {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+  transition: left 0.6s ease;
+  z-index: 1;
+}
+
+.card-hover:hover::before {
+  left: 100%;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(59, 130, 246, 0.1);
+}
+
+.dark .card-hover:hover {
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(59, 130, 246, 0.2);
+}
+
+/* 工作经历卡片特殊效果 */
+.experience-card {
+  position: relative;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 2px solid transparent;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.dark .experience-card {
+  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+}
+
+.experience-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #3b82f6, #8b82f6, #ef4444);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+  border-radius: 24px;
+}
+
+.experience-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  border-color: #3b82f6;
+  box-shadow: 
+    0 30px 60px rgba(59, 130, 246, 0.2),
+    0 0 0 1px rgba(59, 130, 246, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.experience-card:hover::after {
+  opacity: 0.05;
+}
+
+.dark .experience-card:hover {
+  box-shadow: 
+    0 30px 60px rgba(59, 130, 246, 0.3),
+    0 0 0 1px rgba(59, 130, 246, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* 工作经历卡片内容悬停效果 */
+.experience-card:hover .company-name {
+  color: #3b82f6;
+  transform: translateX(5px);
+}
+
+.experience-card:hover .position-title {
+  color: #3b82f6;
+  transform: scale(1.02);
+}
+
+.experience-card:hover .period-badge {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: white;
+  transform: scale(1.05);
+}
+
+.experience-card:hover .achievement-item {
+  color: #1f2937;
+  transform: translateX(8px);
+}
+
+.dark .experience-card:hover .achievement-item {
+  color: #f9fafb;
+}
+
+/* 成就列表项动画 */
+.achievement-item {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.achievement-item::before {
+  content: '';
+  position: absolute;
+  left: -15px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  background: #3b82f6;
+  border-radius: 50%;
+  transform: translateY(-50%) scale(0);
+  transition: all 0.3s ease;
+}
+
+.experience-card:hover .achievement-item::before {
+  transform: translateY(-50%) scale(1);
+}
+
+/* 部门信息悬停效果 */
+.department-info {
+  transition: all 0.3s ease;
+}
+
+.experience-card:hover .department-info {
+  color: #6b7280;
+}
+
+.dark .experience-card:hover .department-info {
+  color: #9ca3af;
+}
+
+/* 工作经历卡片进入动画 */
+.experience-card {
+  animation: experienceCardIn 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+}
+
+@keyframes experienceCardIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 卡片悬停时的内部元素动画 */
+.experience-card:hover .company-name {
+  animation: companyNameGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes companyNameGlow {
+  from {
+    text-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+  }
+}
+
+/* 成就列表项悬停时的图标动画 */
+.experience-card:hover .achievement-item .text-blue-500 {
+  animation: bulletPulse 1s ease-in-out infinite;
+}
+
+@keyframes bulletPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* 卡片边框发光效果 */
+.experience-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ef4444, #3b82f6);
+  background-size: 400% 400%;
+  border-radius: 26px;
+  z-index: -2;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: borderGlow 3s ease-in-out infinite;
+}
+
+.experience-card:hover::before {
+  opacity: 1;
+}
+
+@keyframes borderGlow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* 响应式悬停效果 */
+@media (hover: hover) {
+  .experience-card:hover {
+    transform: translateY(-12px) scale(1.03);
+  }
+}
+
+@media (hover: none) {
+  .experience-card:active {
+    transform: translateY(-6px) scale(1.01);
+  }
+}
+
+/* 技能条样式 */
+.skill-level-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.skill-level-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  border-radius: 4px;
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.skill-level-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* 技能图标动画 */
+.skill-icon {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-item:hover .skill-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* 项目卡片悬停时的图片缩放 */
+.project-card:hover .project-overlay {
+  opacity: 0.1;
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.project-card img {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover img {
+  transform: scale(1.05);
+}
+
 @keyframes slideInFromLeft {
   0% {
     opacity: 0;

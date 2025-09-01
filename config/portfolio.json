@@ -204,7 +204,7 @@
         "links": {
           "github": "https://github.com/machaojin1917939763/Dify-WebUI"
         },
-        "featured": false
+        "featured": true
       },
       {
         "id": 5,
@@ -215,7 +215,7 @@
         "links": {
           "github": "https://github.com/machaojin1917939763/mcp-ui"
         },
-        "featured": false
+        "featured": true
       }
     ]
   },
@@ -281,7 +281,7 @@
   },
 
   "footer": {
-    "copyright": "© 2024 马超金. 用❤️设计，用Next.js构建",
+    "copyright": "© 2024 马超金",
     "links": [
       {
         "text": "隐私政策",
