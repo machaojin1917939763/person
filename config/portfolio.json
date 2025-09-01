@@ -1,127 +1,219 @@
 {
   "personal": {
-    "name": "Alex Chen",
-    "title": "Full Stack Developer",
-    "subtitle": "A passionate full-stack developer crafting beautiful digital experiences with modern technologies.",
-    "email": "hello@alexchen.dev",
-    "location": "San Francisco, CA",
-    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop&crop=face",
-    "resume": "/resume.pdf"
+    "name": "马超金",
+    "title": "Java后端开发工程师",
+    "subtitle": "专注于企业级应用开发与系统架构设计，具备丰富的微服务架构和AI提效工具开发经验",
+    "email": "ma@machaojin.cn",
+    "phone": "17384273601",
+    "wechat": "17384273601",
+    "location": "北京",
+    "avatar": "https://local-imge.oss-cn-beijing.aliyuncs.com/images/%E9%A9%AC%E8%B6%85%E9%87%91.png",
+    "resume": "#",
+    "github": "https://github.com/machaojin1917939763",
+    "website": "https://machaojin.cn"
   },
   
   "hero": {
-    "greeting": "Hello, I'm",
-    "name": "Alex Chen",
-    "description": "A passionate full-stack developer crafting beautiful digital experiences with modern technologies.",
+    "greeting": "你好，我是",
+    "name": "马超金",
+    "description": "专注于Java后端开发与系统架构设计，具备丰富的微服务架构和AI提效工具开发经验。目前在小米科技担任软件研发工程师，负责政企服务平台研发与系统架构优化。",
     "cta": {
-      "text": "View My Work",
+      "text": "查看我的项目",
       "action": "scrollToProjects"
     }
   },
 
   "about": {
-    "title": "About Me",
+    "title": "关于我",
     "description": [
-      "I'm a passionate developer with 5+ years of experience in creating innovative web solutions. I specialize in React, Node.js, and modern web technologies, always striving to deliver pixel-perfect designs and seamless user experiences.",
-      "When I'm not coding, you'll find me exploring new design trends, contributing to open source projects, or enjoying a good cup of coffee while reading about the latest tech innovations."
+      "我是一名专注于Java后端开发的软件工程师，目前在小米科技有限责任公司担任软件研发工程师，负责政企服务平台的研发与维护。",
+      "我具备扎实的Java基础知识和丰富的企业级应用开发经验，熟练掌握Spring生态、微服务架构、数据库优化等技术栈。",
+      "在工作中，我主导了自动化测试平台、AI提效工具、大数据对接平台等多个重要项目的开发，具备从0到1的项目架构设计和实施能力。",
+      "我热爱开源，在GitHub上有多个获得星标的开源项目，包括Dify-WebUI和MCP-UI等。"
+    ]
+  },
+
+  "education": {
+    "title": "教育背景",
+    "items": [
+      {
+        "school": "黑龙江科技大学",
+        "degree": "软件工程 本科",
+        "department": "计算机与信息工程学院",
+        "graduation": "2024.06",
+        "honors": [
+          "三等奖学金",
+          "第十四届蓝桥杯省一等奖",
+          "第十三届蓝桥杯省三等奖",
+          "第十六届全国大学生程序设计大赛省三等奖",
+          "2023大学生算法大赛全国三等奖",
+          "第四届全国大学生算法设计与编程挑战赛全国铜奖"
+        ]
+      }
     ]
   },
 
   "skills": {
-    "title": "Skills & Expertise",
+    "title": "技能专长",
     "categories": [
       {
-        "name": "React",
-        "icon": "⚛️",
-        "level": 95
+        "name": "Java",
+        "icon": "☕",
+        "level": 95,
+        "description": "熟练掌握Java语言和面向对象设计思想，了解集合、线程、IO等基础知识"
       },
       {
-        "name": "Next.js", 
-        "icon": "▲",
-        "level": 90
+        "name": "Spring生态",
+        "icon": "🌱",
+        "level": 90,
+        "description": "熟练掌握Spring、SpringMVC、SpringBoot等主流框架"
       },
       {
-        "name": "Node.js",
-        "icon": "💚",
-        "level": 88
+        "name": "微服务架构",
+        "icon": "🏗️",
+        "level": 88,
+        "description": "熟悉SpringCloud、SpringCloud Alibaba微服务框架及其基本组件"
       },
       {
-        "name": "TypeScript",
-        "icon": "📘",
-        "level": 85
+        "name": "MySQL",
+        "icon": "🐬",
+        "level": 85,
+        "description": "熟练掌握MySQL数据库，理解事务、索引、锁机制等原理"
       },
       {
-        "name": "Python",
-        "icon": "🐍",
-        "level": 80
+        "name": "Redis",
+        "icon": "🔴",
+        "level": 85,
+        "description": "熟练Redis能够实现缓存、分布式锁、主从复制和分片集群等功能"
       },
       {
-        "name": "MongoDB",
-        "icon": "🍃",
-        "level": 82
+        "name": "并发编程",
+        "icon": "⚡",
+        "level": 80,
+        "description": "熟练掌握Java并发编程、锁机制、线程池机制、AQS等高级特性"
       },
       {
-        "name": "AWS",
-        "icon": "☁️",
-        "level": 78
+        "name": "消息队列",
+        "icon": "📨",
+        "level": 75,
+        "description": "熟悉RabbitMQ、RocketMQ，了解Kafka"
       },
       {
-        "name": "Docker",
+        "name": "DevOps",
         "icon": "🐳",
-        "level": 75
+        "level": 75,
+        "description": "熟悉Docker、Jenkins，能够使用Docker进行容器化部署和管理"
+      }
+    ]
+  },
+
+  "experience": {
+    "title": "工作经历",
+    "items": [
+      {
+        "company": "小米科技有限责任公司",
+        "position": "软件研发工程师",
+        "department": "系统架构部",
+        "location": "北京",
+        "period": "2024.07 - 至今",
+        "achievements": [
+          "负责小米政企服务平台的研发与维护，承担政企机型代码的适配与版本管理工作",
+          "主导自动化测试平台从0到1的开发与持续优化，提升测试效率与覆盖率",
+          "参与内部AI提效工具研发，推动AI能力在研发流程中的落地",
+          "开发大数据对接平台，实现日志数据的自动采集、处理与可视化展示",
+          "建设AI日志分析平台，可在短时间内完成1～2G日志的自动分析与异常定位",
+          "负责安卓系统稳定性相关工作，深入分析Bug根因并推动修复",
+          "主导小米系统升级驱动模块开发，实现异常触发自动升级机制"
+        ]
+      },
+      {
+        "company": "CARIAD",
+        "position": "Java研发工程师",
+        "department": "C|TT",
+        "location": "北京",
+        "period": "2023.06 - 2024.04",
+        "achievements": [
+          "参与大众汽车及其旗下子品牌汽车的车机端、手机端、网页端的后台服务开发",
+          "编写工具类，提高UT编写速度30%",
+          "利用设计模式重构代码，优化代码结构，降低代码耦合度",
+          "利用Redis设计并实现缓存框架，解决缓存三大问题，接口请求耗时降低40%",
+          "根据布隆过滤器原理实现布隆过滤器，整合缓存框架",
+          "参与退款业务、免密支付业务、订单存储等多个业务模块开发"
+        ]
       }
     ]
   },
 
   "projects": {
-    "title": "Featured Projects",
+    "title": "项目经历",
     "items": [
       {
         "id": 1,
-        "title": "E-Commerce Platform",
-        "description": "A modern e-commerce solution built with Next.js, featuring real-time inventory management and secure payment processing.",
+        "title": "EMM企业设备管理平台",
+        "description": "负责EMM平台的日常维护与功能迭代，覆盖新功能开发、自动化测试、性能优化与线上部署，平台目前已支持超4000万台设备的管理。",
         "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-        "technologies": ["Next.js", "Stripe", "MongoDB"],
-        "links": {
-          "demo": "https://demo.example.com",
-          "github": "https://github.com/alexchen/ecommerce",
-          "case_study": "/case-studies/ecommerce"
-        },
+        "technologies": ["Spring Boot", "MyBatis", "Redis", "MySQL", "Prometheus", "Grafana"],
+        "achievements": [
+          "参与核心功能开发，如设备分组管理、远程锁定/擦除、策略同步、功能权限控制等",
+          "负责开发敏感场景功能限制策略，如电子围栏、保密区域自动禁用摄像头与录音功能",
+          "主导核心模块重构，基于经典设计模式进行代码优化，代码重复率下降约25%",
+          "优化系统部署流程，接口性能平均提升约20%",
+          "对Redis缓存与MySQL索引结构进行优化，稳定支撑4000万设备的在线连接"
+        ],
+        "links": {},
         "featured": true
       },
       {
         "id": 2,
-        "title": "Task Management App",
-        "description": "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
+        "title": "小米系统升级驱动",
+        "description": "负责系统升级驱动模块的架构设计与技术方案制定，统筹跨团队资源，推动项目从方案到落地的完整实施，提升系统的自恢复能力与稳定性。",
         "image": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
-        "technologies": ["React", "Socket.io", "Node.js"],
-        "links": {
-          "demo": "https://tasks.example.com",
-          "github": "https://github.com/alexchen/taskmanager"
-        },
+        "technologies": ["Android", "AOSP", "Shell脚本", "OTA升级"],
+        "achievements": [
+          "独立完成模块架构设计，撰写系统设计文档，梳理模块间职责与接口调用流程",
+          "深入阅读并分析AOSP源码，重点研究UpdateEngine、RecoverySystem、Watchdog等模块逻辑",
+          "实现系统异常自动升级流程，系统自愈能力显著提升",
+          "使用Shell脚本结合Android服务组件管理升级生命周期，升级失败率降低约5%",
+          "引入分级升级逻辑与异常过滤机制，升级成功率提升约8%"
+        ],
+        "links": {},
         "featured": true
       },
       {
         "id": 3,
-        "title": "AI-Powered Analytics",
-        "description": "A data visualization dashboard that uses machine learning to provide insights and predictions for business metrics.",
+        "title": "稳定性服务中台",
+        "description": "稳定性服务中台是稳定性业务团队的核心支撑平台，旨在通过流程自动化与智能工具集成，提升开发效率与问题响应速度。",
         "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-        "technologies": ["Python", "TensorFlow", "React"],
-        "links": {
-          "demo": "https://analytics.example.com",
-          "github": "https://github.com/alexchen/ai-analytics"
-        },
+        "technologies": ["Spring Boot", "MyBatis", "Redis", "Quartz", "NLP", "Jira API"],
+        "achievements": [
+          "负责平台整体架构设计与技术选型，基于Spring Boot + MyBatis + Redis构建后端服务",
+          "开发Jira超期提醒服务，任务超期响应率提升30%",
+          "接入Gerrit REST接口，实现代码提交频次统计与开发活跃度分析",
+          "构建AI日志智能解析模块，支持1GB+日志文件的分钟级分析，问题定位效率提升超40%",
+          "实现Jira状态自动扭转引擎，减少人工干预，实现问题闭环流程自动化"
+        ],
+        "links": {},
         "featured": true
       },
       {
         "id": 4,
-        "title": "Weather Forecast App", 
-        "description": "A beautiful weather application with location-based forecasts, interactive maps, and personalized weather alerts.",
+        "title": "Dify-WebUI",
+        "description": "开源项目，获得207个星标，是一个现代化的AI应用开发平台Web界面。",
         "image": "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=600&h=400&fit=crop",
-        "technologies": ["React Native", "OpenWeather API"],
+        "technologies": ["React", "TypeScript", "AI集成"],
         "links": {
-          "demo": "https://weather.example.com",
-          "github": "https://github.com/alexchen/weather-app"
+          "github": "https://github.com/machaojin1917939763/Dify-WebUI"
+        },
+        "featured": false
+      },
+      {
+        "id": 5,
+        "title": "MCP-UI",
+        "description": "开源项目，获得71个星标，是一个现代化的MCP（Model Context Protocol）用户界面。",
+        "image": "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=600&h=400&fit=crop",
+        "technologies": ["React", "TypeScript", "MCP协议"],
+        "links": {
+          "github": "https://github.com/machaojin1917939763/mcp-ui"
         },
         "featured": false
       }
@@ -129,39 +221,39 @@
   },
 
   "contact": {
-    "title": "Let's Work Together",
-    "description": "Have a project in mind? I'd love to hear about it. Let's create something amazing together.",
+    "title": "联系我",
+    "description": "如果您有项目需要合作或者想要了解更多关于我的信息，欢迎随时联系我。",
     "cta": {
-      "text": "Get In Touch",
+      "text": "联系我",
       "action": "email"
     },
     "social": [
       {
         "name": "GitHub",
-        "url": "https://github.com/alexchen",
+        "url": "https://github.com/machaojin1917939763",
         "icon": "github"
       },
       {
-        "name": "LinkedIn", 
-        "url": "https://linkedin.com/in/alexchen",
-        "icon": "linkedin"
+        "name": "个人网站",
+        "url": "https://machaojin.cn",
+        "icon": "globe"
       },
       {
-        "name": "Twitter",
-        "url": "https://twitter.com/alexchen_dev",
-        "icon": "twitter"
+        "name": "微信",
+        "url": "#",
+        "value": "17384273601",
+        "icon": "message-circle"
       }
     ]
   },
 
   "seo": {
-    "title": "Alex Chen - Full Stack Developer | React & Node.js Expert",
-    "description": "Passionate full-stack developer with 5+ years experience in React, Node.js, and modern web technologies. Creating beautiful digital experiences with clean, efficient code.",
-    "keywords": "Full Stack Developer, React Developer, Node.js, TypeScript, Frontend Engineer, Web Development, Portfolio",
-    "author": "Alex Chen",
-    "siteUrl": "https://alexchen.dev",
-    "image": "/og-image.png",
-    "twitterHandle": "@alexchen_dev"
+    "title": "马超金 - Java后端开发工程师 | 小米科技系统架构部",
+    "description": "专注于Java后端开发与系统架构设计，具备丰富的微服务架构和AI提效工具开发经验。目前在小米科技担任软件研发工程师，负责政企服务平台研发与系统架构优化。",
+    "keywords": "Java后端开发, 软件工程师, Spring生态, 微服务架构, 小米科技, 系统架构, 北京",
+    "author": "马超金",
+    "siteUrl": "https://machaojin.cn",
+    "image": "/og-image.png"
   },
 
   "theme": {
@@ -189,14 +281,14 @@
   },
 
   "footer": {
-    "copyright": "© 2024 Alex Chen. Designed with ❤️ and built with Next.js",
+    "copyright": "© 2024 马超金. 用❤️设计，用Next.js构建",
     "links": [
       {
-        "text": "Privacy Policy",
+        "text": "隐私政策",
         "url": "/privacy"
       },
       {
-        "text": "Terms of Service", 
+        "text": "服务条款", 
         "url": "/terms"
       }
     ]

@@ -7,6 +7,7 @@ import {
   getHeroConfig, 
   getAboutConfig, 
   getSkillsConfig, 
+  getExperienceConfig,
   getProjectsConfig, 
   getContactConfig, 
   getFooterConfig,
@@ -27,6 +28,7 @@ export default function Home() {
   const heroConfig = getHeroConfig()
   const aboutConfig = getAboutConfig()
   const skillsConfig = getSkillsConfig()
+  const experienceConfig = getExperienceConfig()
   const projectsConfig = getProjectsConfig()
   const contactConfig = getContactConfig()
   const footerConfig = getFooterConfig()
@@ -36,6 +38,7 @@ export default function Home() {
   const heroRef = useRef(null)
   const aboutRef = useRef(null)
   const skillsRef = useRef(null)
+  const experienceRef = useRef(null)
   const projectsRef = useRef(null)
   const contactRef = useRef(null)
 
@@ -117,6 +120,27 @@ export default function Home() {
       }
     )
 
+    // Experience Section Animation - 工作经历区域动画
+    gsap.fromTo('.experience-card', 
+      { 
+        opacity: 0, 
+        y: 50 
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+        stagger: 0.3,
+        scrollTrigger: {
+          trigger: '.experience-section',
+          start: 'top 75%',
+          end: 'bottom 25%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    )
+
     // Projects Section Animation - 项目区域动画
     gsap.fromTo('.project-card', 
       { 
@@ -188,25 +212,31 @@ export default function Home() {
                   onClick={() => scrollToSection('about')}
                   className="nav-link focus:outline-none"
                 >
-                  About
+                  关于我
                 </button>
                 <button 
                   onClick={() => scrollToSection('skills')}
                   className="nav-link focus:outline-none"
                 >
-                  Skills
+                  技能专长
+                </button>
+                <button 
+                  onClick={() => scrollToSection('experience')}
+                  className="nav-link focus:outline-none"
+                >
+                  工作经历
                 </button>
                 <button 
                   onClick={() => scrollToSection('projects')}
                   className="nav-link focus:outline-none"
                 >
-                  Projects
+                  项目经历
                 </button>
                 <button 
                   onClick={() => scrollToSection('contact')}
                   className="nav-link focus:outline-none"
                 >
-                  Contact
+                  联系我
                 </button>
                 <button
                   onClick={toggleTheme}
@@ -320,6 +350,56 @@ export default function Home() {
         {/* Section Separator */}
         <div className="section-separator"></div>
 
+        {/* Experience Section - 工作经历区域 */}
+        <section id="experience" ref={experienceRef} className="experience-section py-32 px-6">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-sf-pro font-bold text-center mb-16">
+              {experienceConfig.title}
+            </h2>
+            <div className="space-y-12">
+              {experienceConfig.items.map((job, index) => (
+                <div
+                  key={index}
+                  className="experience-card bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+                >
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                    <div className="mb-4 md:mb-0">
+                      <h3 className="font-sf-pro font-bold text-2xl mb-2 text-gray-900 dark:text-white">
+                        {job.position}
+                      </h3>
+                      <div className="flex flex-wrap items-center gap-4 text-gray-600 dark:text-gray-400">
+                        <span className="font-semibold text-lg">{job.company}</span>
+                        <span className="text-sm">•</span>
+                        <span>{job.department}</span>
+                        <span className="text-sm">•</span>
+                        <span>{job.location}</span>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <span className="inline-block bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 px-4 py-2 rounded-full text-sm font-medium">
+                        {job.period}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="space-y-3">
+                    {job.achievements.map((achievement, achievementIndex) => (
+                      <div key={achievementIndex} className="flex items-start">
+                        <span className="text-blue-500 mr-3 mt-1 text-lg">•</span>
+                        <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                          {achievement}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Section Separator */}
+        <div className="section-separator"></div>
+
         {/* Projects Section - 项目区域 */}
         <section id="projects" ref={projectsRef} className="projects-section py-32 px-6">
           <div className="max-w-6xl mx-auto">
@@ -358,17 +438,17 @@ export default function Home() {
                       ))}
                     </div>
                     <div className="flex gap-4">
-                      {project.links.demo && (
+                      {project.links?.demo && (
                         <a
                           href={project.links.demo}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="link-with-arrow text-blue-500 hover:text-blue-600 font-medium"
                         >
-                          View Demo
+                          查看演示
                         </a>
                       )}
-                      {project.links.github && (
+                      {project.links?.github && (
                         <a
                           href={project.links.github}
                           target="_blank"
@@ -377,6 +457,23 @@ export default function Home() {
                         >
                           GitHub
                         </a>
+                      )}
+                      {project.achievements && (
+                        <div className="text-sm text-gray-500 dark:text-gray-400">
+                          <details className="cursor-pointer">
+                            <summary className="font-medium text-gray-600 dark:text-gray-300">
+                              主要成果
+                            </summary>
+                            <ul className="mt-2 space-y-1 text-left">
+                              {project.achievements.slice(0, 3).map((achievement, index) => (
+                                <li key={index} className="flex items-start">
+                                  <span className="text-blue-500 mr-2">•</span>
+                                  <span>{achievement}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </details>
+                        </div>
                       )}
                     </div>
                   </div>
@@ -408,15 +505,25 @@ export default function Home() {
                 </a>
                 <div className="flex gap-4 flex-wrap justify-center">
                   {contactConfig.social.map((social) => (
-                    <a 
-                      key={social.name}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="social-link text-gray-600 dark:text-gray-400 hover:text-white transition-colors duration-200"
-                    >
-                      {social.name}
-                    </a>
+                    social.name === "微信" ? (
+                      <div 
+                        key={social.name}
+                        className="social-link text-gray-600 dark:text-gray-400 cursor-pointer"
+                        title={`微信号: ${social.value}`}
+                      >
+                        {social.name}: {social.value}
+                      </div>
+                    ) : (
+                      <a 
+                        key={social.name}
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="social-link text-gray-600 dark:text-gray-400 hover:text-white transition-colors duration-200"
+                      >
+                        {social.name}
+                      </a>
+                    )
                   ))}
                 </div>
               </div>

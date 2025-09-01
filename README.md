@@ -228,6 +228,6 @@ If you like this project, please give it a ⭐ on GitHub!
 
 **Built with ❤️ and lots of ☕**
 
-Made by [Alex Chen](https://github.com/machaojin1917939763) • 🤖 **Generated with [Claude Code](https://claude.ai/code)**
+Made by [Ma Chaojin](https://github.com/machaojin1917939763) • 🤖 **Generated with [Claude Code](https://claude.ai/code)**
 
 </div>
