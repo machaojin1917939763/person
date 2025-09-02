@@ -239,9 +239,9 @@
         "icon": "globe"
       },
       {
-        "name": "微信",
+        "name": "邮箱",
         "url": "#",
-        "value": "",
+        "value": "ma@machaojin.cn",
         "icon": "message-circle"
       }
     ]

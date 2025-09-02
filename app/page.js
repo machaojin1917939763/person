@@ -783,11 +783,11 @@ export default function Home() {
                 </a>
                 <div className="flex gap-4 flex-wrap justify-center">
                   {contactConfig.social.map((social) => (
-                    social.name === "微信" ? (
+                    social.name === "邮箱" ? (
                       <div 
                         key={social.name}
                         className="social-link text-gray-600 dark:text-gray-400 cursor-pointer"
-                        title={`微信号: ${social.value}`}
+                        title={`邮箱号: ${social.value}`}
                       >
                         {social.name}: {social.value}
                       </div>
