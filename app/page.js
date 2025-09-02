@@ -84,13 +84,67 @@ export default function Home() {
         duration: 1.0, 
         ease: 'power3.out' 
       }, '-=0.8')
-      .from('.hero-cta', { 
+      .from('.hero-scroll-indicator', { 
         opacity: 0, 
         y: 30, 
         duration: 0.8, 
         ease: 'power2.out',
         scale: 0.9
       }, '-=0.6')
+
+    // Hero Parallax Effect - 英雄区域视差效果
+    gsap.to('.hero-title', {
+      y: -50,
+      opacity: 0.8,
+      scrollTrigger: {
+        trigger: '.hero-section',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1
+      }
+    })
+
+    gsap.to('.hero-subtitle', {
+      y: -30,
+      opacity: 0.6,
+      scrollTrigger: {
+        trigger: '.hero-section',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1
+      }
+    })
+
+    // Mouse tracking effect - 鼠标跟踪效果 (仅在桌面设备上启用)
+    const isMobile = window.innerWidth <= 768 || 'ontouchstart' in window
+    
+    const handleMouseMove = (e) => {
+      if (isMobile) return // 移动设备上禁用鼠标跟踪
+      
+      const { clientX, clientY } = e
+      const centerX = window.innerWidth / 2
+      const centerY = window.innerHeight / 2
+      const moveX = (clientX - centerX) * 0.01
+      const moveY = (clientY - centerY) * 0.01
+      
+      gsap.to('.hero-title', {
+        x: moveX,
+        y: moveY,
+        duration: 0.5,
+        ease: 'power2.out'
+      })
+      
+      gsap.to('.hero-subtitle', {
+        x: moveX * 0.5,
+        y: moveY * 0.5,
+        duration: 0.7,
+        ease: 'power2.out'
+      })
+    }
+
+    if (!isMobile) {
+      window.addEventListener('mousemove', handleMouseMove)
+    }
 
     // About Section Animation - 关于区域滚动动画
     gsap.fromTo('.about-content', 
@@ -339,6 +393,9 @@ export default function Home() {
     // Cleanup function
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+      if (!isMobile) {
+        window.removeEventListener('mousemove', handleMouseMove)
+      }
     }
   }, [mounted])
 
@@ -413,7 +470,7 @@ export default function Home() {
         </nav>
 
         {/* Hero Section - 英雄区域 */}
-        <section ref={heroRef} className="hero-section min-h-screen flex items-center justify-center px-6">
+        <section ref={heroRef} className="hero-section h-screen flex items-center justify-center px-6 relative">
           <div className="text-center max-w-4xl">
             <h1 className="hero-title text-6xl md:text-8xl font-sf-pro font-bold mb-6 leading-tight">
               {heroConfig.greeting}{' '}
@@ -422,13 +479,13 @@ export default function Home() {
             <p className="hero-subtitle text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed">
               {heroConfig.description}
             </p>
-            <div className="hero-cta">
-              <button 
-                onClick={() => scrollToSection('projects')}
-                className="btn-primary magnetic-button hover-lift relative z-10 text-white font-semibold px-10 py-4 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-black"
-              >
-                {heroConfig.cta.text}
-              </button>
+            <div className="hero-scroll-indicator">
+              <div className="scroll-mouse" onClick={() => scrollToSection('about')}>
+                <div className="mouse">
+                  <div className="wheel"></div>
+                </div>
+                <div className="scroll-text">向下滑动</div>
+              </div>
             </div>
           </div>
         </section>

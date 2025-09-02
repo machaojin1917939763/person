@@ -71,6 +71,215 @@ body {
 }
 
 
+/* Hero scroll indicator */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+}
+
+.scroll-mouse {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0.8;
+}
+
+.scroll-mouse:hover {
+  opacity: 1;
+  transform: translateY(-5px);
+}
+
+.mouse {
+  width: 24px;
+  height: 40px;
+  border: 2px solid currentColor;
+  border-radius: 12px;
+  position: relative;
+  margin-bottom: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.wheel {
+  width: 3px;
+  height: 8px;
+  background: currentColor;
+  border-radius: 2px;
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scroll-wheel 2s infinite;
+}
+
+.scroll-text {
+  font-size: 12px;
+  color: currentColor;
+  opacity: 0.7;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+@keyframes scroll-wheel {
+  0% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateX(-50%) translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Responsive optimizations */
+@media (max-width: 768px) {
+  .hero-scroll-indicator {
+    bottom: 20px;
+  }
+  
+  .scroll-mouse {
+    transform: scale(0.8);
+  }
+  
+  .mouse {
+    width: 20px;
+    height: 32px;
+  }
+  
+  .scroll-text {
+    font-size: 10px;
+  }
+  
+  /* Disable mouse tracking on mobile */
+  .hero-title,
+  .hero-subtitle {
+    transform: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-scroll-indicator {
+    bottom: 15px;
+  }
+  
+  .scroll-mouse {
+    transform: scale(0.7);
+  }
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .scroll-wheel {
+    animation: none;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .hover-lift:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .magnetic-button:hover::before {
+    left: -100%;
+  }
+}
+
+/* Page loading animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced hover effects */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.dark .hover-lift:hover {
+  box-shadow: 0 20px 40px rgba(255, 255, 255, 0.05);
+}
+
+/* Magnetic button effect */
+.magnetic-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.magnetic-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.magnetic-button:hover::before {
+  left: 100%;
+}
+
 /* Enhanced glass effect */
 .glass-effect {
   backdrop-filter: blur(24px);
