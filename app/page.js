@@ -2,10 +2,10 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react'
 import { useTheme } from './components/ThemeProvider'
-import AnimatedBackground from './components/AnimatedBackground'
 import { 
   getHeroConfig, 
   getAboutConfig, 
+  getEducationConfig,
   getSkillsConfig, 
   getExperienceConfig,
   getProjectsConfig, 
@@ -27,6 +27,7 @@ export default function Home() {
   // 获取配置数据
   const heroConfig = getHeroConfig()
   const aboutConfig = getAboutConfig()
+  const educationConfig = getEducationConfig()
   const skillsConfig = getSkillsConfig()
   const experienceConfig = getExperienceConfig()
   const projectsConfig = getProjectsConfig()
@@ -37,6 +38,7 @@ export default function Home() {
   
   const heroRef = useRef(null)
   const aboutRef = useRef(null)
+  const educationRef = useRef(null)
   const skillsRef = useRef(null)
   const experienceRef = useRef(null)
   const projectsRef = useRef(null)
@@ -49,8 +51,14 @@ export default function Home() {
 
   // Smooth scroll function
   const scrollToSection = useCallback((sectionId) => {
+    console.log('Scrolling to section:', sectionId)
     const element = document.getElementById(sectionId)
-    element?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    if (element) {
+      console.log('Element found:', element)
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    } else {
+      console.error('Element not found for id:', sectionId)
+    }
   }, [])
 
   useEffect(() => {
@@ -59,7 +67,7 @@ export default function Home() {
     
     // 页面加载时的初始动画
     gsap.set('.hero-title, .hero-subtitle, .hero-cta', { opacity: 0, y: 50 })
-    gsap.set('.about-content, .skill-item, .experience-card, .project-card', { opacity: 0, y: 30 })
+    gsap.set('.about-content, .education-item, .skill-item, .experience-card, .project-card', { opacity: 0, y: 30 })
     
     // Hero Section Animation - 英雄区动画
     const heroTl = gsap.timeline()
@@ -101,6 +109,29 @@ export default function Home() {
           trigger: '.about-section',
           start: 'top 85%',
           end: 'bottom 15%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    )
+
+    // Education Section Animation - 教育背景区域动画
+    gsap.fromTo('.education-item', 
+      { 
+        opacity: 0, 
+        y: 50,
+        scale: 0.95
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 1.0,
+        ease: 'power3.out',
+        stagger: 0.3,
+        scrollTrigger: {
+          trigger: '.education-section',
+          start: 'top 80%',
+          end: 'bottom 20%',
           toggleActions: 'play none none reverse'
         }
       }
@@ -319,9 +350,6 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       
-      {/* 动态背景 */}
-      <AnimatedBackground />
-      
       <div className="min-h-screen relative z-10 text-black dark:text-white">
         {/* Navigation - 导航栏 */}
         <nav className="fixed top-0 left-0 right-0 z-50 glass-effect">
@@ -332,10 +360,19 @@ export default function Home() {
               </div>
               <div className="flex items-center space-x-3 md:space-x-6">
                 <button 
-                  onClick={() => scrollToSection('about')}
+                  onClick={() => {
+                    console.log('About button clicked')
+                    scrollToSection('about')
+                  }}
                   className="nav-link focus:outline-none"
                 >
                   关于我
+                </button>
+                <button 
+                  onClick={() => scrollToSection('education')}
+                  className="nav-link focus:outline-none"
+                >
+                  教育背景
                 </button>
                 <button 
                   onClick={() => scrollToSection('skills')}
@@ -435,6 +472,62 @@ export default function Home() {
                   )}
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section Separator */}
+        <div className="section-separator"></div>
+
+        {/* Education Section - 教育背景区域 */}
+        <section id="education" ref={educationRef} className="education-section py-32 px-6">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-sf-pro font-bold text-center mb-16">
+              {educationConfig.title}
+            </h2>
+            <div className="space-y-8">
+              {educationConfig.items.map((education, index) => (
+                <div
+                  key={index}
+                  className="education-item bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300"
+                >
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
+                    <div className="mb-4 md:mb-0 flex-1">
+                      <h3 className="font-sf-pro font-bold text-2xl mb-2 text-gray-900 dark:text-white">
+                        {education.school}
+                      </h3>
+                      <div className="flex flex-wrap items-center gap-4 text-gray-600 dark:text-gray-400 mb-2">
+                        <span className="font-semibold text-lg">{education.degree}</span>
+                        <span className="text-sm">•</span>
+                        <span>{education.department}</span>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <span className="inline-block bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 px-4 py-2 rounded-full text-sm font-medium">
+                        {education.graduation}
+                      </span>
+                    </div>
+                  </div>
+                  {education.honors && education.honors.length > 0 && (
+                    <div>
+                      <h4 className="font-sf-pro font-semibold text-lg mb-4 text-gray-900 dark:text-white">
+                        荣誉奖项
+                      </h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        {education.honors.map((honor, honorIndex) => (
+                          <div
+                            key={honorIndex}
+                            className="flex items-center text-gray-600 dark:text-gray-400"
+                          >
+                            <span className="text-blue-500 mr-3">🏆</span>
+                            <span>{honor}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </section>

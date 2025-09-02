@@ -70,11 +70,6 @@ body {
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* 动态背景相关样式 */
-.hero-section, .about-section, .skills-section, .projects-section, .contact-section {
-  position: relative;
-  z-index: 10;
-}
 
 /* Enhanced glass effect */
 .glass-effect {
@@ -574,6 +569,103 @@ body {
   50% {
     box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
   }
+}
+
+/* 教育背景项样式 */
+.education-item {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  padding: 2rem;
+}
+
+.education-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.dark .education-item {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.dark .education-item:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(59, 130, 246, 0.5);
+}
+
+.education-school {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: rgb(17, 24, 39);
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.dark .education-school {
+  color: rgb(249, 250, 251);
+}
+
+.education-item:hover .education-school {
+  color: rgb(59, 130, 246);
+}
+
+.dark .education-item:hover .education-school {
+  color: rgb(96, 165, 250);
+}
+
+.education-degree {
+  font-size: 1.125rem;
+  color: rgb(55, 65, 81);
+  margin-bottom: 0.25rem;
+}
+
+.dark .education-degree {
+  color: rgb(209, 213, 219);
+}
+
+.education-department {
+  font-size: 1rem;
+  color: rgb(75, 85, 99);
+  margin-bottom: 0.5rem;
+}
+
+.dark .education-department {
+  color: rgb(156, 163, 175);
+}
+
+.education-date {
+  font-size: 0.875rem;
+  color: rgb(107, 114, 128);
+  margin-bottom: 0.75rem;
+}
+
+.dark .education-date {
+  color: rgb(107, 114, 128);
+}
+
+.education-honors {
+  font-size: 0.875rem;
+  color: rgb(75, 85, 99);
+  line-height: 1.625;
+}
+
+.dark .education-honors {
+  color: rgb(156, 163, 175);
 }
 
 /* Enhanced card effects */

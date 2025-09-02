@@ -20,7 +20,7 @@
 
 ### 🌟 **Interactive Animations**
 - **GSAP ScrollTrigger** - Smooth, performant scroll-driven animations
-- **Floating Orb Background** - Dynamic, animated background with floating light orbs
+
 - **Mouse Tracking** - Subtle cursor-following light effects
 - **Gradient Text Animation** - Animated rainbow gradient for the name display
 - **Parallax Effects** - Layered animations creating depth and engagement
@@ -152,15 +152,6 @@ body {
 }
 ```
 
-### 🌟 **Background Animation**
-Customize the animated background in `app/components/AnimatedBackground.js`:
-```javascript
-// Number of floating orbs
-orbs.current = Array.from({ length: 6 }, () => new FloatingOrb())
-
-// Orb colors and opacity
-gradient.addColorStop(0, `rgba(59, 130, 246, ${this.opacity * 0.8})`)
-```
 
 ## 📦 Build & Deploy
 
